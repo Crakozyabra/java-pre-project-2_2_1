@@ -6,10 +6,7 @@ import hiber.model.User;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -39,15 +36,6 @@ public class MainApp {
             System.out.println("Car = " + user.getCar());
             System.out.println();
         }
-
-        userService.getByCarsModelAndSeries("model3", 300).ifPresent(user -> {
-            System.out.println("Id = " + user.getId());
-            System.out.println("First Name = " + user.getFirstName());
-            System.out.println("Last Name = " + user.getLastName());
-            System.out.println("Email = " + user.getEmail());
-            System.out.println("Car = " + user.getCar());
-            System.out.println();
-        });
 
         context.close();
     }
