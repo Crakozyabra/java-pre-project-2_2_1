@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
 
    @Autowired
@@ -20,10 +22,14 @@ public class UserServiceImp implements UserService {
       userDao.add(user);
    }
 
-   @Transactional(readOnly = true)
    @Override
    public List<User> listUsers() {
       return userDao.listUsers();
+   }
+
+   @Override
+   public Optional<User> getByCarsModelAndSeries(String model, int series) {
+      return userDao.getByCarsModelAndSeries(model, series);
    }
 
 }
